@@ -15,9 +15,15 @@
 
 <body>
   <div id="root"></div>
+  <div  >
+<form style="display: flex;justify-content:center; flex-direction: column" action="post" method="POST"> 
+  <!-- 
+action will send the data to the post query on index.js and method tells about the method used -->
+<input type="text" name="name" placeholder="Name" /> <br />
+  <input type="text" name="occupation" placeholder="occupation"/> <br />
+  <input type="submit" value="Submit" /> 
 
-  <script type="text/javascript" src="https://cdn.turbo360-dev.com/admin/assets/scaffold/js/vendor.min.js"></script>
-  <script type="text/javascript" src="https://cdn.turbo360-dev.com/admin/common.js"></script>
-  <script type="text/javascript" src="https://cdn.turbo360-dev.com/admin/scaffold.js"></script>
+</form>
+   </div>
 </body>
 </html>
