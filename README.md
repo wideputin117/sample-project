@@ -26,3 +26,5 @@ To build for production, run build:
 ```
 $ npm run build
 ```
+you can add routes like register on your own also
+and create different kind of http requests like post ,get,put,delete
