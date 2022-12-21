@@ -7,12 +7,27 @@
     <h1>Name: {{name}}</h1>
     <h2>Company: {{company}}</h2>
     <h2>Languages: </h2>
-<!-- this is hoe u loop through arrays in mustache template engine-->
+<!-- this is how u loop through arrays  of things in mustache template engine-->
     <ol>
         {{#languages}}
         <li>{{.}}</li>
         {{/languages}}
     </ol>
- 
+ <!-- add an form that sends an post req -->
+ <form action="/addprofile" method="POST">
+        <input type="text" name="name" placeholder="name" /><br />
+        <input type="text" name="username" placeholder="Username" /><br />
+        <input type="text" name="company" placeholder="company" /><br />
+        <input type="text" name="languages" placeholder="languages" /><br />
+        <input type="submit" value="Add Profile" />
+ </form>
+ <!-- for now i am commenting out this-->
+ <!--  
+    
+    <div>
+    <h1>name: {{name}}</h1>
+    <h2>occupation: {{occupation}}</h2>
+    <h3>age: {{age}}</h3>
+ </div> -->
 </body>
 </html>
