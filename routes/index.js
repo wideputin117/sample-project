@@ -27,7 +27,13 @@ const profiles = {
       name: "elon",
       company: 'tesla',
       languages: ['c','c#','java']
+        },
+        megha: {
+          name: 'megha',
+          company: 'chapri gang',
+          languages: ['hindi','english','pahadi']
         }
+
       }
  
 // creating another get handler
@@ -48,22 +54,32 @@ const data = { // data object renders the name and occupation keys value dynamic
   occupation: occupation,
   age : age
  }
- res.render('profile',data) // profile is the path to file where the data will be rendered dynamically in html
-// have comeented out res.json so that i can render the data dynamically
+ res.render('profiletwo',data) // profile is the path to file where the data will be rendered dynamically in html
+// have commented out res.json so that i can render the data dynamically
  /* res.json({
     name: name,
     occupation: occupation                
   }) */
 })
-
-// an post request
-router.post('/post',(req,res) =>{
-  const body = req.body // normally comes from a post form
+// an post handler for the add profile form in profile.mustache //
+router.post('/addprofile',(req,res)=> {
+  const body = req.body // this takes the body and sends it to the post method
+ 
+  // this is to render the languages as an array
+  body['languages'] = req.body.languages.split(', ')
+    // we wanna take the profiles collection and add an profile to it //
+  // to do that use  this
+  profiles[body.username] = body
+res.redirect('/profile/' + body.username)})
+  /**  instead of sending the json we are just gonna redirect
+  // lets render it as an json 
   res.json({
     confirmation: 'success',
-    data: body 
+    data: body
   })
 })
+// an post request
+ **/
 
 // using parameters to dynamically print the entered data
 // adding colons makes the param an dynamic variable that we can enter on url
@@ -90,5 +106,5 @@ router.get('/:profile/:username',(req,res)=>{
    res.render('profile',currentProfile) // rendering the template 'profile' and pass in the currentprofile to it
    // we replace raw json with rendering the template
   })
-
+ 
 module.exports = router
