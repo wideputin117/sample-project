@@ -25,10 +25,13 @@ vertex.configureApp(app, config)
 
 // import routes
 const index = require('./routes/index')
+// importing register route
+const register = require('./routes/register')
   // sample API Routes
 
 // set routes
 app.use('/', index)
+app.use('/register', register) // connecting the register path to register route
   // sample API Routes
 
 module.exports = app

@@ -2,7 +2,7 @@
 const express = require('express')
 const { route } = require('../app')
 const router = express.Router()
-
+// http requests post,get,put,delete
 /*  This is the home route. It renders the index.mustache page from the views directory.
   Data is rendered using the Mustache templating engine. For more
   information, view here: https://mustache.github.io/#demo */
@@ -10,7 +10,25 @@ router.get('/', (req, res) => {
   res.render('index', { text: 'This is the dynamic data. Open index.js from the routes directory to see.' })
 })
 
-
+// creating list of profile of programmers
+//collection of profiles
+const profiles = {
+  manish: {
+      name: "manish",
+      company: 'self',
+      languages: ['javascript', 'c++','react']
+        },
+        sjobs: {
+      name: "steve",
+      company: 'apple',
+      languages: ['object-c','swift','c++']
+        },
+        elon: {
+      name: "elon",
+      company: 'tesla',
+      languages: ['c','c#','java']
+        }
+      }
  
 // creating another get handler
 router.get('/test',(req,res)=>{ // test can be determined as an variable
@@ -57,12 +75,20 @@ router.get('/:param',(req,res)=>{ // when added : it becomes an parameter
 })
 
 // using multiple request parameters
-router.get('/:man/:women',(req,res)=>{
-  const man = req.params.man
-  const women = req.params.women
-  res.json({
-    man: man,
-    women: women
+
+router.get('/:profile/:username',(req,res)=>{
+  const profile = req.params.profile
+  const username = req.params.username
+  const currentProfile = profiles[username]
+  if(currentProfile == null) {
+    res.json({
+      confirmation: 'fail',
+      message:  'profile ' + username + ' not found'
+    })
+    return
+  }
+   res.render('profile',currentProfile) // rendering the template 'profile' and pass in the currentprofile to it
+   // we replace raw json with rendering the template
   })
-})
+
 module.exports = router

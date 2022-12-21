@@ -5,7 +5,14 @@
 <body>
     
     <h1>Name: {{name}}</h1>
-    <h2>Occupation: {{occupation}}</h2>
-    <h2>Age:{{age}}</h2>
+    <h2>Company: {{company}}</h2>
+    <h2>Languages: </h2>
+<!-- this is hoe u loop through arrays in mustache template engine-->
+    <ol>
+        {{#languages}}
+        <li>{{.}}</li>
+        {{/languages}}
+    </ol>
+ 
 </body>
 </html>
