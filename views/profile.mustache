@@ -1,9 +1,11 @@
 <html>
     <head>
-
+         <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
+         <link rel="stylesheet" href="/css/style.css" type="text/css" />
     </head>
-<body>
-    
+<body class="container">
+    <!-- to see the image in the browser we will use the image tag and will pass the image key that we declared profiles array of objects -->
+   <img class="profile-img" src="{{image}}" alt="profile image" />
     <h1>Name: {{name}}</h1>
     <h2>Company: {{company}}</h2>
     <h2>Languages: </h2>
@@ -16,6 +18,8 @@
  <!-- add an form that sends an post req -->
  <form action="/addprofile" method="POST">
         <input type="text" name="name" placeholder="name" /><br />
+ <!-- we added images this will also be redirected from the profiles object after adding the new profile but the image address will be same -->
+        <input type="text" name="image"  placeholder="Images(/images/image.jpg)" /><br />
         <input type="text" name="username" placeholder="Username" /><br />
         <input type="text" name="company" placeholder="company" /><br />
         <input type="text" name="languages" placeholder="languages" /><br />

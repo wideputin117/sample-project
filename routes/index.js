@@ -13,23 +13,30 @@ router.get('/', (req, res) => {
 // creating list of profile of programmers
 //collection of profiles
 const profiles = {
-  manish: {
-      name: "manish",
-      company: 'self',
+  // username //
+   bgates: {
+    image: 'images/bgates.jpg', // this is the images key part of the profiles object//
+      name: "Bill Gates", // name key //
+      company: 'Microsoft',
       languages: ['javascript', 'c++','react']
         },
+        // usernanme //
         sjobs: {
-      name: "steve",
-      company: 'apple',
+          image: '/images/steve.jpg',
+      name: "Steve",
+      company: 'Apple',
       languages: ['object-c','swift','c++']
         },
+        // usernanme //
         elon: {
-      name: "elon",
+          image: '/images/elon.jpg',
+      name: "Elon Musk",
       company: 'tesla',
       languages: ['c','c#','java']
         },
+        // usernanme //
         megha: {
-          name: 'megha',
+          name: 'Megha',
           company: 'chapri gang',
           languages: ['hindi','english','pahadi']
         }
@@ -62,6 +69,7 @@ const data = { // data object renders the name and occupation keys value dynamic
   }) */
 })
 // an post handler for the add profile form in profile.mustache //
+
 router.post('/addprofile',(req,res)=> {
   const body = req.body // this takes the body and sends it to the post method
  
@@ -70,9 +78,10 @@ router.post('/addprofile',(req,res)=> {
     // we wanna take the profiles collection and add an profile to it //
   // to do that use  this
   profiles[body.username] = body
-res.redirect('/profile/' + body.username)})
-  /**  instead of sending the json we are just gonna redirect
-  // lets render it as an json 
+  // this takes the new profile that is entered in the post form and redirected to profile to render // 
+res.redirect('/profile/' + body.username)})  /**  instead of sending the json we are just gonna redirect
+  
+// lets render it as an json 
   res.json({
     confirmation: 'success',
     data: body
@@ -95,7 +104,7 @@ router.get('/:param',(req,res)=>{ // when added : it becomes an parameter
 router.get('/:profile/:username',(req,res)=>{
   const profile = req.params.profile
   const username = req.params.username
-  const currentProfile = profiles[username]
+  const currentProfile = profiles[username] // all the keys and their value are stored in this //
   if(currentProfile == null) {
     res.json({
       confirmation: 'fail',
