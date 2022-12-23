@@ -68,8 +68,8 @@ const data = { // data object renders the name and occupation keys value dynamic
     occupation: occupation                
   }) */
 })
-// an post handler for the add profile form in profile.mustache //
 
+// an post handler for to add new profile on form in profile.mustache //
 router.post('/addprofile',(req,res)=> {
   const body = req.body // this takes the body and sends it to the post method
  
