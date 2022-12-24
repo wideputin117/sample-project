@@ -4,6 +4,14 @@ const express = require('express')
 
 const app = express() // initialize app
 
+//  create an middleware function that will take place before the route every route will have this middleware ??? //
+// to decide which route should have this middleware place them after the routes in which u dont want them 
+// but before those routes in which u want them ie place them after or before app.use
+app.use((req, res, next) => {
+  const timestamp = new Date().toDateString()
+  req.timestamp = timestamp
+  next()
+})
 /*  Apps are configured with settings as shown in the conig object below.
     Options include setting views directory, static assets directory,
     and database settings. Default config settings can be seen here:
