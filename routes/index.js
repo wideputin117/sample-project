@@ -15,13 +15,15 @@ router.get('/', (req, res) => {
 const profiles = {
   // username //
    bgates: {
-    image: 'images/bgates.jpg', // this is the images key part of the profiles object//
+    username: 'bgates', // username key //
+    image: '/images/bgates.jpg', // this is the images key part of the profiles object//
       name: "Bill Gates", // name key //
       company: 'Microsoft',
       languages: ['javascript', 'c++','react']
         },
         // usernanme //
         sjobs: {
+          username: 'sjobs',
           image: '/images/steve.jpg',
       name: "Steve",
       company: 'Apple',
@@ -29,6 +31,7 @@ const profiles = {
         },
         // usernanme //
         elon: {
+          username: 'elon',
           image: '/images/elon.jpg',
       name: "Elon Musk",
       company: 'tesla',
@@ -36,6 +39,7 @@ const profiles = {
         },
         // usernanme //
         megha: {
+          username: 'megha',
           name: 'Megha',
           company: 'chapri gang',
           languages: ['hindi','english','pahadi']
@@ -92,6 +96,8 @@ res.redirect('/profile/' + body.username)})  /**  instead of sending the json we
 
 // using parameters to dynamically print the entered data
 // adding colons makes the param an dynamic variable that we can enter on url
+/*
+
 router.get('/:param',(req,res)=>{ // when added : it becomes an parameter
    const path = req.params.param
   res.json({
@@ -99,6 +105,7 @@ router.get('/:param',(req,res)=>{ // when added : it becomes an parameter
   })
 })
 
+*/
 // using multiple request parameters
 
 router.get('/:profile/:username',(req,res)=>{
@@ -112,8 +119,27 @@ router.get('/:profile/:username',(req,res)=>{
     })
     return
   }
+  
+  currentProfile.timestamp = req.timestamp 
    res.render('profile',currentProfile) // rendering the template 'profile' and pass in the currentprofile to it
    // we replace raw json with rendering the template
   })
+
+
+  // profiles template
+router.get('/profiles',(req,res)=>{
+   // pass the username and the profile to the profiles.mustache
+   const keys = Object.keys(profiles)
+   const list = []
+   keys.forEach(key=>{
+    list.push(profiles[key])
+   })
+   
+   const data = {
+    profiles: list,
+    timestamp: req.timestamp // you can toDateString by choice it is not mandatory//
+   }
+res.render('profiles',data)
+})
  
 module.exports = router

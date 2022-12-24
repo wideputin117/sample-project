@@ -4,9 +4,11 @@
          <link rel="stylesheet" href="/css/style.css" type="text/css" />
     </head>
 <body class="container">
+    <span>{{timestamp}}</span>
     <!-- to see the image in the browser we will use the image tag and will pass the image key that we declared profiles array of objects -->
-   <img class="profile-img" src="{{image}}" alt="profile image" />
+    
     <h1>Name: {{name}}</h1>
+    <img class="profile-img" src="{{image}}" alt="profile image" />
     <h2>Company: {{company}}</h2>
     <h2>Languages: </h2>
 <!-- this is how u loop through arrays  of things in mustache template engine-->
