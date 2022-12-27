@@ -111,7 +111,7 @@ router.get('/:param',(req,res)=>{ // when added : it becomes an parameter
 router.get('/:profile/:username',(req,res)=>{
   const profile = req.params.profile
   const username = req.params.username
-  const currentProfile = profiles[username] // all the keys and their value are stored in this //
+  const currentProfile = profiles[username] // all the keys and theiPr value are stored in this //
   if(currentProfile == null) {
     res.json({
       confirmation: 'fail',
